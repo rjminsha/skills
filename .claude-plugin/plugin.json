@@ -1,0 +1,11 @@
+{
+  "name": "rjminsha-skills",
+  "skills": [
+    "./skills/engineering/grill-with-docs",
+    "./skills/engineering/setup-rjminsha-skills",
+    "./skills/engineering/tdd",
+    "./skills/productivity/grill-me",
+    "./skills/productivity/handoff",
+    "./skills/productivity/write-a-skill"
+  ]
+}
