@@ -5,6 +5,15 @@ description: Test-driven development with red-green-refactor loop. Use when user
 
 # Test-Driven Development
 
+## Inputs
+
+Preferred inputs — provide as many as exist:
+
+- **`docs/user-stories/0001-*.md`** — defines the actor, behaviour, and BDD scenarios to implement
+- **`docs/user-stories/0001-*-TRI.md`** — architecture, data model, API design, NFRs, and testing strategy for this feature
+- **`LANGUAGE.md`** — canonical domain terms; use for test naming and interface vocabulary
+- **`MAP.md`** — system map; use to understand component boundaries and avoid duplication
+
 ## Philosophy
 
 **Core principle**: Tests should verify behavior through public interfaces, not implementation details. Code can change entirely; tests shouldn't.
@@ -44,7 +53,7 @@ RIGHT (vertical):
 
 ### 1. Planning
 
-When exploring the codebase, use the project's domain glossary so that test names and interface vocabulary match the project's language, and respect ADRs in the area you're touching.
+Read the user story for behaviour and BDD scenarios, the TRI.md for architecture and testing strategy, LANGUAGE.md for domain vocabulary, and MAP.md for component boundaries. Use this context to inform test naming, interface design, and scope — do not re-derive what is already documented.
 
 Before writing any code:
 

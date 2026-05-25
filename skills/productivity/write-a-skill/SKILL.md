@@ -7,7 +7,7 @@ description: Create new agent skills with proper structure, progressive disclosu
 
 ## Process
 
-1. **Gather requirements** - ask user about:
+1. **Gather requirements** - use `grill-me` to determine the intention of the skill. If `grill-me` is not available, ask the user directly about:
    - What task/domain does the skill cover?
    - What specific use cases should it handle?
    - Does it need executable scripts or just instructions?
@@ -55,6 +55,12 @@ description: Brief description of capability. Use when [specific triggers].
 ## Advanced features
 
 [Link to separate files: See [REFERENCE.md](REFERENCE.md)]
+
+## Used skills
+
+| Skill | If not available |
+|---|---|
+| `skill-name` | Fallback behaviour description |
 ```
 
 ## Description Requirements
@@ -105,6 +111,30 @@ Split into separate files when:
 - Content has distinct domains (finance vs sales schemas)
 - Advanced features are rarely needed
 
+## Used Skills
+
+Declare dependencies on other skills so the agent knows what to check for and how to behave if they are missing.
+
+- Add a `## Used skills` section to the SKILL.md body
+- Check for the skill inline at the point it would be used — not upfront
+- The fallback column describes behaviour, not literal text
+
+```md
+## Used skills
+
+| Skill | If not available |
+|---|---|
+| `some-skill` | Fallback behaviour |
+```
+
+Omit the section entirely if the skill has no dependencies.
+
+## Used skills
+
+| Skill | If not available |
+|---|---|
+| `grill-me` | Ask the user directly about the skill's task, use cases, script needs, and reference materials |
+
 ## Review Checklist
 
 After drafting, verify:
@@ -115,3 +145,4 @@ After drafting, verify:
 - [ ] Consistent terminology
 - [ ] Concrete examples included
 - [ ] References one level deep
+- [ ] Used skills declared if this skill depends on others
