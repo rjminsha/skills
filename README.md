@@ -4,6 +4,32 @@ A personal set of agent skills that capture how I work — from the first vague 
 
 Or perhaps it is bringing Enterprise complexity just to make sure no one has any fun or builds anything quickly.
 
+## Supported agents
+
+Skills work across multiple coding agents, including:
+
+- [IBM Bob](https://bob.ibm.com/)
+- [Pi](https://pi.dev/) and local [Granite](https://www.ibm.com/granite) models
+- Cursor, Windsurf, and others supported by the [skills CLI](https://github.com/vercel-labs/skills)
+
+## Quickstart
+
+Install the [skills CLI](https://github.com/vercel-labs/skills), then run:
+
+```bash
+npx skills@latest add https://github.com/rjminsha/skills
+```
+
+Pick the skills you want and which coding agents to install them on. We recommend selecting `/setup-rjminsha-skills` — once installed, run it in your repo before using any other skills.
+
+## IBM skills
+
+IBM-specific skills (checkpoint goals, Cloud Service Framework, CTO office workflows) live in a separate repository on github.ibm.com, designed for use within IBM and with IBM Bob, Pi, and local Granite models:
+
+```bash
+npx skills@latest add https://github.ibm.com/Robbie-Minshall/ibm-skills
+```
+
 ## The workflow
 
 ```
@@ -53,24 +79,6 @@ Or perhaps it is bringing Enterprise complexity just to make sure no one has any
   CI/CD → staging → chaos testing → performance → red teaming
   security & architecture review → risk scoring → production
 ```
-
-## Supported agents
-
-Skills work across multiple coding agents, including:
-
-- [IBM Bob](https://bob.ibm.com/)
-- [Pi](https://pi.dev/)
-- Cursor, Windsurf, and others supported by the [skills CLI](https://github.com/vercel-labs/skills)
-
-## Quickstart
-
-Install the [skills CLI](https://github.com/vercel-labs/skills), then run:
-
-```bash
-npx skills@latest add rjminsha/skills
-```
-
-Pick the skills you want and which coding agents to install them on. Make sure you select `/setup-rjminsha-skills` before using the engineering workflow skills.
 
 ## Documentation workflow
 
