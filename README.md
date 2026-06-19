@@ -22,14 +22,6 @@ npx skills@latest add https://github.com/rjminsha/skills
 
 Pick the skills you want and which coding agents to install them on. We recommend selecting `/setup-rjminsha-skills` — once installed, run it in your repo before using any other skills.
 
-## IBM skills
-
-IBM-specific skills (checkpoint goals, Cloud Service Framework, CTO office workflows) live in a separate repository on github.ibm.com, designed for use within IBM and with IBM Bob, Pi, and local Granite models:
-
-```bash
-npx skills@latest add https://github.ibm.com/Robbie-Minshall/ibm-skills
-```
-
 ## The workflow
 
 ```
