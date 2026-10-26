@@ -48,16 +48,22 @@ Analyse the default branch. If the repo is on the default branch, read it as nor
    - `stale` vs `archived` — stale is neglected; archived is intentionally retired.
    - `stale` vs `stable` — stable repos still have issues/PRs resolved; stale ones do not.
 
-4. **Extract domain terms** — words or phrases that carry specific meaning within this codebase for discussing the *problem domain and product*, not implementation mechanics or tooling conventions.
+4. **Extract domain terms** — the vocabulary someone needs to follow this organisation's READMEs, specs and user stories. Look in the README first, then doc headings and code comments.
 
-   **Include:** business concepts, product-specific entities, platform terms, and any word that would confuse a new team member when reading a user story, spec, or planning discussion.
+   **Include** a term if a newcomer to *this organisation or platform* would need it explained, even if it is an IBM-wide or vendor term:
+   - platform, service and product names (e.g. Auditree, Global Catalog, Partner Center)
+   - internal project, team and environment names, and the names of specific accounts or instances (e.g. an account called "Provider Petra" — the name, never its ID)
+   - acronyms and resource kinds the docs assume (e.g. S2S auth, secret group, ROKS)
+   - naming conventions for the org's resources
 
-   **Exclude (do not include):**
-   - Tool or process names that are standard engineering practice (e.g. PR gate, commit convention, CI pipeline, semantic release)
-   - Implementation tracking terms (e.g. "implementation tracking", "feature spec" as a process term)
-   - Generic engineering vocabulary that isn't specific to this domain (e.g. merge commit, pre-commit hook, Helm chart)
+   **Exclude** a term if it is any of:
+   - a file or directory name (those belong in `MAP.md` / `DETAILS.md`)
+   - universal software-engineering vocabulary or developer tooling: CI/CD, PR gates, scanners and linters, Helm chart, milestone, decision record, meeting notes
+   - an ordinary-word phrase for an activity (batch analysis, compliance check, evidence collection)
+   - about this skill or its output (coordinator, sub-agent, refresh, waypoint, the four generated files)
+   - a value rather than a name: IDs, URLs, counts
 
-   When in doubt, ask: *"Would a product manager or domain expert need this term defined to have a meaningful conversation about what the product does?"* If yes, include it. If it's developer process/tooling, exclude it.
+   **Style:** at most 8 terms per repo; one plain sentence of 20 words or fewer each, no lists or examples. Test: *"Would a smart newcomer to this platform be unable to guess it?"* If not, leave it out.
 
 5. **Write temp files** to `temp/[repository-name]-analysis.md` and `temp/[repository-name]-domain.md` using the templates below. Writing these structured files (rather than returning results inline) is what lets the coordinator agent merge multiple repos reliably in Step 3.
 

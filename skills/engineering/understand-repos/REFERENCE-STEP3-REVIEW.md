@@ -15,7 +15,11 @@ Merge rules:
 - Conflicting definitions → choose the most precise; add a note `(varies: see [repo])`.
 - Repo-specific terms that are not meaningful org-wide → still include, tagged `[repo-name]`.
 
-**Critical check before writing** — sub-agents over-include, so re-apply the Step 2 include/exclude test to every merged term. Drop any term that is developer process or tooling (PR gates, commit conventions, CI/CD pipeline types, implementation-tracking artefacts, script resume files, session timeouts) or that is a standard engineering/vendor term needing no project-specific explanation. Keep definitions to one or two sentences. A small, sharp glossary is better than a complete one.
+**Critical check before writing** — re-apply the Step 2 include/exclude rules to every merged term; sub-agents over-include. Then:
+- Merge variants of one concept into the base term (Cabin, Cabin allocation, Cabin project → Cabin).
+- Keep a term used in only one repo if it passes the Step 2 test. Do not drop it for being "well known" or IBM-wide — the test is whether a newcomer to this platform would need it.
+- Never write IDs, URLs or other values (see Secrets in Step 2). Definitions stay at one plain sentence of 20 words or fewer.
+- Target roughly 15–30 terms for an organisation. Trim the least useful if over; do not pad.
 
 **Format:**
 
