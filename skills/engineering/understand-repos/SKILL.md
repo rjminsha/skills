@@ -1,6 +1,6 @@
 ---
 name: understand-repos
-description: Analyse a single git repository or a directory of cloned repos (GitHub Organisation) and produce four living reference files — DOMAIN-LANGUAGE.md, MAP.md, SUMMARY.md, and DETAILS.md — capturing domain vocabulary, structural waypoints, a status overview, and per-repo deep-dives. Uses parallel sub-agents per repo and validates output with a self-quiz loop (≥ 90% pass rate). Use when a user wants to understand, explore, document, or onboard onto a git repository or GitHub Organisation. Triggers: "understand repo", "map a codebase", "repo overview", "what does this repo do", "document this codebase", "I'm new to this project", "explore this organisation", "analyse these repos".
+description: Analyse a single git repository or a directory of cloned repos (GitHub Organisation) and produce four living reference files — DOMAIN-LANGUAGE.md, MAP.md, SUMMARY.md, and DETAILS.md — capturing domain vocabulary, structural waypoints, a status overview, and per-repo deep-dives. Uses parallel sub-agents per repo and validates output with a self-quiz loop (≥ 90% pass rate). Use when a user wants to understand, explore, document, or onboard onto a git repository or GitHub Organisation. Trigger phrases include "understand repo", "map a codebase", "repo overview", "what does this repo do", "document this codebase", "I'm new to this project", "explore this organisation", "analyse these repos".
 ---
 
 # Understand Repos

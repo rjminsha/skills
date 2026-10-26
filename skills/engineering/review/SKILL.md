@@ -1,6 +1,6 @@
 ---
 name: review
-description: Post-TDD code review. Use when the TDD loop is complete and the user wants to: (1) assess code against rules, (2) verify user stories and requirements are met by the implementation, (3) check for unintended drift in MAP/LANGUAGE/decisions, and (4) ask "could we do better?" against quality goals — surface area, supply chain, existing modules, functionality, complexity, documentation clarity, and test clarity.
+description: Post-TDD code review. Use when the TDD loop is complete and the user wants to (1) assess code against rules, (2) verify user stories and requirements are met by the implementation, (3) check for unintended drift in MAP/LANGUAGE/decisions, and (4) ask "could we do better?" against quality goals — surface area, supply chain, existing modules, functionality, complexity, documentation clarity, and test clarity.
 ---
 
 # Review
