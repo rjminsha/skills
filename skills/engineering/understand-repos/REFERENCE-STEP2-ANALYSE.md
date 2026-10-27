@@ -1,6 +1,8 @@
-# Step 2 — Per-Repository Sub-Agents
+# Step 2 — Per-Repository Sub-Agents & Completeness Loop
 
-For each repository, spawn a **sub-agent** with the following instructions. Sub-agents run in parallel where possible.
+Read `temp/inventory.md` created in Step 1 to retrieve the full list of repositories ($N$ total).
+
+For each repository in `temp/inventory.md`, spawn a **sub-agent** with the instructions below. Sub-agents run in parallel where possible.
 
 **Before spawning**, confirm sub-agents can read the repository path and write to `temp/`. If the path is outside the agent's workspace and sub-agents cannot access it, do the analysis directly in the coordinator (one repo at a time) instead of spawning. Never fabricate analysis for a repo that could not be read.
 
@@ -134,4 +136,18 @@ SPDX identifier or "Unknown"
 | TermName | What it means in this codebase. |
 ```
 
-Proceed to [Step 3 — Coordinator review and merge](./REFERENCE-STEP3-REVIEW.md) once all sub-agents have completed.
+## Completeness verification loop
+
+After sub-agents finish, the coordinator **must verify 100% repository coverage**:
+
+1. **Audit temp files**: Read `temp/inventory.md`. For every repository listed, check that **both** `temp/[repo]-analysis.md` and `temp/[repo]-domain.md` exist and contain non-empty content.
+2. **Detect missing analysis**:
+   - Compare the list of completed analysis files against the inventory ($N$ total).
+   - If any repositories are missing, partially written, or failed:
+     > "Analysis missing for K of N repositories: [missing-repo-1, missing-repo-2, ...]. Running analysis for missing repositories..."
+     - Run/spawn analysis specifically for those missing repositories.
+3. **Loop until complete**:
+   - Repeat the audit and analysis until `completed_count == total_inventory_count`.
+   - Never proceed to Step 3 until **all** $N$ repositories in `temp/inventory.md` have their analysis files in `temp/`.
+
+Proceed to [Step 3 — Coordinator review and merge](./REFERENCE-STEP3-REVIEW.md) once all repositories are verified complete.

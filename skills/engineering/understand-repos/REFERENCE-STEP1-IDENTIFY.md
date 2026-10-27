@@ -33,8 +33,31 @@ When analysing an organisation directory (containing multiple repositories):
      > "Found N repositories in the `<org>` GitHub organisation that are not cloned locally: [list of repos]. Would you like to clone them? Options: **(1)** clone all, **(2)** select specific repos to clone, **(3)** skip — analyse only currently cloned repos."
    - If the user chooses to clone (all or selected):
      - Clone each chosen repository into the organisation directory using the git CLI: `git clone <repo-url>` (using the preferred protocol/URL matching existing repos or user preference).
-     - Include the newly cloned repositories in the subsequent refresh and analysis steps.
    - If `gh` CLI is not available or the user skips cloning, proceed with only the currently cloned local repositories.
+
+## Build repository inventory (`temp/inventory.md`)
+
+To guarantee that **no repository is missed or skipped**, the coordinator must construct an exhaustive inventory file:
+
+1. **Enumerate all repositories**:
+   - **Single repo**: exactly one entry (the repo itself).
+   - **Organisation**: perform a full enumeration of all sub-directories under the organisation path that contain a `.git/` directory. Do not use pagination-limited listings or assume a partial scan is complete.
+2. **Write `temp/inventory.md`**:
+   Write the complete list of discovered repositories with their paths and total count:
+
+   ```markdown
+   # Repository Inventory
+
+   Total: N
+
+   | Repository | Path |
+   |---|---|
+   | repo-1 | ./repo-1 |
+   | repo-2 | ./repo-2 |
+   ```
+
+3. **Log discovery**: Announce the inventory to the user:
+   > "Discovered N repositories for analysis: [repo-1, repo-2, ..., repo-N]."
 
 ## Refresh repositories
 
@@ -42,7 +65,7 @@ Local clones are often behind or sitting on a feature branch, which skews the ac
 
 > "Before analysing, I'd like to update each repository: `git fetch`, then switch to its default branch and fast-forward pull. Repositories with uncommitted changes to tracked files are left untouched. Options: **(1)** update and pull, **(2)** fetch only (no checkout changes), **(3)** skip — analyse as-is."
 
-Do the refresh in the coordinator, once per repo, **before spawning sub-agents** (sub-agents must not modify repos). For each repo:
+Do the refresh in the coordinator for **every repository listed in `temp/inventory.md`**, once per repo, **before spawning sub-agents** (sub-agents must not modify repos). For each repo:
 
 1. **Find the default branch**: `git symbolic-ref --short refs/remotes/origin/HEAD` (gives `origin/main`). If unset, try `git remote set-head origin --auto`; if that fails, use `main`, then `master`.
 2. **Fetch**: `git fetch origin --prune`. If there is no remote, or fetch fails (offline, auth), record the failure and continue with local state — do not abort the run.

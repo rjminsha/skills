@@ -1,6 +1,6 @@
 # Step 3 — Coordinator: Review and Merge
 
-Once **all** sub-agents from Step 2 have completed, the coordinator agent reads every `temp/[repo]-analysis.md` and `temp/[repo]-domain.md` file (not `temp/refresh-log.md`, which is only used for the refresh caveat below and in Step 5) and produces four top-level output files.
+Once the Step 2 completeness verification confirms that **all** $N$ repositories in `temp/inventory.md` have their `temp/[repo]-analysis.md` and `temp/[repo]-domain.md` files ready, the coordinator reads every analysis and domain file (not `temp/refresh-log.md`, which is only used for the refresh caveat below and in Step 5) and produces four top-level output files.
 
 ---
 
@@ -253,6 +253,18 @@ Applies to `SUMMARY.md`, `MAP.md`, and `DETAILS.md`. Use each repo's `## Fork` s
 - **Non-forks first**: original (non-fork) repositories come first, ordered by status as described under `SUMMARY.md`; the forked-repositories groups follow.
 - **Group by upstream**: forks of the same upstream sit together under one heading for that upstream, regardless of their individual status. Within a group, sort by status group then alphabetically. Groups themselves are sorted alphabetically by upstream.
 - **`DETAILS.md`** stays alphabetical by repo name (it is a lookup file), but each fork entry carries a `**Fork of:**` line.
+
+---
+
+## Post-merge completeness assertion
+
+Before proceeding to Step 4, the coordinator **must assert repository completeness**:
+
+1. Count the repositories listed in `temp/inventory.md` ($N$).
+2. Count the entries in the `## Repository index` in `SUMMARY.md`.
+3. Count the entries in the `## Repositories` table in `MAP.md` (for multiple repos).
+4. Count the `## [repo-name]` sections in `DETAILS.md`.
+5. **Assertion**: All counts must equal $N$. If any repository from `temp/inventory.md` is missing from any of the three files, the coordinator must insert the missing entries before advancing to Step 4.
 
 ---
 
