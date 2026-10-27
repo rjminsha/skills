@@ -15,6 +15,27 @@ Determine the root output directory:
 
 Create a `temp/` directory inside the output root if it does not already exist.
 
+## Check for un-cloned organisation repositories
+
+When analysing an organisation directory (containing multiple repositories):
+
+1. **Identify the GitHub organisation**:
+   - Inspect the remote origin URL of existing local repositories (`git remote get-url origin`) to determine the GitHub organisation name/owner (e.g. `github.com/<org>/<repo>` or `git@github.com:<org>/<repo>.git`).
+   - If it cannot be determined automatically or no repositories are cloned yet, ask the user for the GitHub organisation name.
+
+2. **Check for remote repositories**:
+   - If `gh` CLI (or GitHub API) is available, list all repositories belonging to the GitHub organisation:
+     `gh repo list <org> --limit 1000 --json name,sshUrl,url`
+   - Compare the remote repository list against the sub-directories already present locally (directories containing `.git/`).
+
+3. **Prompt and clone**:
+   - If there are repositories in the GitHub organisation not cloned locally, list them and ask the user:
+     > "Found N repositories in the `<org>` GitHub organisation that are not cloned locally: [list of repos]. Would you like to clone them? Options: **(1)** clone all, **(2)** select specific repos to clone, **(3)** skip — analyse only currently cloned repos."
+   - If the user chooses to clone (all or selected):
+     - Clone each chosen repository into the organisation directory using the git CLI: `git clone <repo-url>` (using the preferred protocol/URL matching existing repos or user preference).
+     - Include the newly cloned repositories in the subsequent refresh and analysis steps.
+   - If `gh` CLI is not available or the user skips cloning, proceed with only the currently cloned local repositories.
+
 ## Refresh repositories
 
 Local clones are often behind or sitting on a feature branch, which skews the activity, status, and content analysis. Bring each repo up to date with its default branch before analysis. This changes the user's working copies, so **ask once for the whole run**:

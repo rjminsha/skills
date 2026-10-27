@@ -24,7 +24,7 @@ description: Analyse a single git repository or a directory of cloned repos (Git
 
 | Step | Reference | What happens |
 |---|---|---|
-| 1 | [Identify repositories](./REFERENCE-STEP1-IDENTIFY.md) | Ask user for local path; determine output root; create `temp/`; ask once, then refresh each repo (fetch, switch to default branch, fast-forward pull) |
+| 1 | [Identify repositories](./REFERENCE-STEP1-IDENTIFY.md) | Ask user for local path; determine output root; for organisations, check for un-cloned org repos and prompt to clone; create `temp/`; ask once, then refresh each repo (fetch, switch to default branch, fast-forward pull) |
 | 2 | [Per-repository sub-agents](./REFERENCE-STEP2-ANALYSE.md) | Analyse each repo in parallel (read-only; detects forks and status); write `temp/[repo]-analysis.md` and `temp/[repo]-domain.md` |
 | 3 | [Coordinator review and merge](./REFERENCE-STEP3-REVIEW.md) | Merge temp files; write `DETAILS.md`, `DOMAIN-LANGUAGE.md`, `MAP.md`, `SUMMARY.md` |
 | 4 | [Self-quiz loop](./REFERENCE-STEP4-QUIZ.md) | Spawn answer-agents; verify ≥ 90% pass rate; write verified Q&A into `DETAILS.md` FAQ |

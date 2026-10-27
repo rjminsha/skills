@@ -13,7 +13,7 @@
 
 The completion message includes:
 
-- Number of repositories analysed.
+- Number of repositories analysed (and any repositories newly cloned during Step 1).
 - Repositories that were **not** fully refreshed (skipped, fetch only, or failed) with the reason — their analysis may be out of date. Source: `temp/refresh-log.md`.
 - Repositories whose branch was switched to the default branch, with the original branch name, so the user can switch back. Source: `temp/refresh-log.md`.
 - Repositories whose fork status was `unknown`.
