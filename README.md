@@ -1,6 +1,6 @@
 # rjminsha Skills
 
-A personal set of agent skills that capture how I work — from the first vague requirement through to production. The objective is a simple, opinionated workflow encoded as skills any coding agent can follow.  My workflow is based upon "traditional" software engineering processes that incorporate chat harnesses and modern models.  The agent is simply part of the team, and my parnter in peer programing and design sessions; they are also a pretty compitent developer but need with goals and overall context of the project.  
+A personal set of agent skills that capture how I work — from the first vague requirement through to production. The objective is a simple, opinionated workflow encoded as skills any coding agent can follow.  My workflow is based upon "traditional" software engineering processes that incorporate chat harnesses and modern models.  The agent is simply part of the team, and my parnter in peer programing and design sessions; they are also a pretty compitent developer but need with goals and overall context of the project.
 
 Or perhaps it is bringing Enterprise complexity just to make sure no one has any fun or builds anything quickly.
 
@@ -111,6 +111,11 @@ General workflow tools, not code-specific.
 - **[handoff](./skills/productivity/handoff/SKILL.md)** — Compact the current conversation into a handoff document so another agent can continue the work.
 - **[write-a-skill](./skills/productivity/write-a-skill/SKILL.md)** — Create new skills with proper structure, progressive disclosure, and bundled resources.
 
+## Learning
+Tools to help understand or learn.
+
+- **[understand-repos](./skills/engineering/understand-repos/SKILL.md)** — Deep-dive analysis of a single repo or an entire GitHub Organisation. Produces `DETAILS.md`, `DOMAIN-LANGUAGE.md`, `MAP.md`, and `SUMMARY.md` — a living reference covering domain vocabulary, structure, and per-repo details. Runs sub-agents in parallel and validates output with a self-quiz loop.
+
 ## Skill outputs
 
 | Skill | Output | Target length |
@@ -123,6 +128,7 @@ General workflow tools, not code-specific.
 | `review` | Review report (conversation) | — |
 | `tdd` | Code + tests | No doc output |
 | `setup-rjminsha-skills` | Repo config scaffold | Minimal config files |
+| `understand-repos` | `DETAILS.md` + `DOMAIN-LANGUAGE.md` + `MAP.md` + `SUMMARY.md` | DOMAIN-LANGUAGE: small, sharp glossary; SUMMARY: grows with repo count; DETAILS: < 500 words per active repo |
 | `write-a-skill` | New skill directory + files | Mirrors the skill structure |
 
 ## Credits
